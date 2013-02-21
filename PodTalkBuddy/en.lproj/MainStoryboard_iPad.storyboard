@@ -171,25 +171,6 @@
         <image name="soundbar_plate_mono.png" width="313" height="158"/>
         <image name="speaker_grill.png" width="320" height="188"/>
     </resources>
-    <classes>
-        <class className="AQLevelMeter" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AQLevelMeter.h"/>
-        </class>
-        <class className="PTBDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTBDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="play:"/>
-                <relationship kind="action" name="sliderMoved:"/>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lvlMeter_in" candidateClass="AQLevelMeter"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="PTBMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTBMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
