@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="jid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="podcasts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Podcast" inverseName="category" inverseEntity="Podcast" syncable="YES"/>
+        <relationship name="service" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PodcastService" inverseName="categories" inverseEntity="PodcastService" syncable="YES"/>
+    </entity>
+    <entity name="Podcast" representedClassName="Podcast" syncable="YES">
+        <attribute name="jid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speaker" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="podcasts" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="PodcastService" representedClassName="PodcastService" syncable="YES">
+        <attribute name="jid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="service" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="351" positionY="189" width="128" height="103"/>
+        <element name="Podcast" positionX="574" positionY="306" width="128" height="118"/>
+        <element name="PodcastService" positionX="7" positionY="99" width="128" height="103"/>
+    </elements>
+</model>

@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8140A2E16D6034900A820AC /* Podcast.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A2D16D6034900A820AC /* Podcast.m */; };
+		A8140A3D16D6041F00A820AC /* Podcast+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A3C16D6041F00A820AC /* Podcast+Create.m */; };
+		A8140A4016D6044500A820AC /* PodcastService+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A3F16D6044500A820AC /* PodcastService+Create.m */; };
+		A8140A4316D6045E00A820AC /* Category+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4216D6045E00A820AC /* Category+Create.m */; };
+		A8140A4616D6138900A820AC /* PodcastService.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4516D6138900A820AC /* PodcastService.m */; };
+		A8140A4916D613A400A820AC /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4816D613A300A820AC /* Category.m */; };
+		A82A89A916D58EBF0056B563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89A816D58EBF0056B563 /* UIKit.framework */; };
+		A82A89AB16D58EBF0056B563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AA16D58EBF0056B563 /* Foundation.framework */; };
+		A82A89AD16D58EBF0056B563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AC16D58EBF0056B563 /* CoreGraphics.framework */; };
+		A82A89AF16D58EBF0056B563 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AE16D58EBF0056B563 /* CoreData.framework */; };
+		A82A89B516D58EBF0056B563 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A82A89B316D58EBF0056B563 /* InfoPlist.strings */; };
+		A82A89B716D58EBF0056B563 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89B616D58EBF0056B563 /* main.m */; };
+		A82A89BB16D58EBF0056B563 /* PTBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */; };
+		A82A89BD16D58EBF0056B563 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89BC16D58EBF0056B563 /* Default.png */; };
+		A82A89BF16D58EBF0056B563 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89BE16D58EBF0056B563 /* Default@2x.png */; };
+		A82A89C116D58EBF0056B563 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C016D58EBF0056B563 /* Default-568h@2x.png */; };
+		A82A89C416D58EBF0056B563 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C216D58EBF0056B563 /* MainStoryboard_iPhone.storyboard */; };
+		A82A89C716D58EBF0056B563 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C516D58EBF0056B563 /* MainStoryboard_iPad.storyboard */; };
+		A82A89CA16D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A82A89C816D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld */; };
+		A82A89CD16D58EBF0056B563 /* PTBMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */; };
+		A82A89D016D58EBF0056B563 /* PTBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */; };
+		A82A89D816D58EBF0056B563 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89D716D58EBF0056B563 /* SenTestingKit.framework */; };
+		A82A89D916D58EBF0056B563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89A816D58EBF0056B563 /* UIKit.framework */; };
+		A82A89DA16D58EBF0056B563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AA16D58EBF0056B563 /* Foundation.framework */; };
+		A82A89DB16D58EBF0056B563 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AE16D58EBF0056B563 /* CoreData.framework */; };
+		A82A89E316D58EBF0056B563 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A82A89E116D58EBF0056B563 /* InfoPlist.strings */; };
+		A82A89E616D58EBF0056B563 /* PodTalkBuddyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89E516D58EBF0056B563 /* PodTalkBuddyTests.m */; };
+		A82A89F116D59A2D0056B563 /* soundbar_plate_mono.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89F016D59A2D0056B563 /* soundbar_plate_mono.png */; };
+		A82A89F316D59A3C0056B563 /* speaker_grill.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89F216D59A3C0056B563 /* speaker_grill.png */; };
+		A891A60B16D5A6C100297C5C /* AQLevelMeter.mm in Sources */ = {isa = PBXBuildFile; fileRef = A891A60416D5A6C100297C5C /* AQLevelMeter.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A891A60C16D5A6C100297C5C /* GLLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A60616D5A6C100297C5C /* GLLevelMeter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A891A60D16D5A6C100297C5C /* LevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A60816D5A6C100297C5C /* LevelMeter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A891A61116D5A80D00297C5C /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A60F16D5A80D00297C5C /* MeterTable.cpp */; };
+		A891A61B16D5A8AA00297C5C /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61416D5A8AA00297C5C /* CADebugMacros.cpp */; };
+		A891A61C16D5A8AA00297C5C /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61716D5A8AA00297C5C /* CAStreamBasicDescription.cpp */; };
+		A891A61D16D5A8AA00297C5C /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61916D5A8AA00297C5C /* CAXException.cpp */; };
+		A891A61F16D5AA4E00297C5C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A61E16D5AA4D00297C5C /* AudioToolbox.framework */; };
+		A891A62116D5AA5B00297C5C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A62016D5AA5B00297C5C /* OpenGLES.framework */; };
+		A891A62316D5AA6500297C5C /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A62216D5AA6500297C5C /* CoreAudio.framework */; };
+		A891A62516D5AA7200297C5C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A62416D5AA7200297C5C /* QuartzCore.framework */; };
+		A891A62716D5AA8700297C5C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A62616D5AA8700297C5C /* CFNetwork.framework */; };
+		A891A62916D5AAA100297C5C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A62816D5AAA100297C5C /* CoreFoundation.framework */; };
+		A891A64316D5C12000297C5C /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A63616D5C12000297C5C /* AudioPlayer.m */; };
+		A891A64416D5C12000297C5C /* AutoRecoveringHttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A63816D5C12000297C5C /* AutoRecoveringHttpDataSource.m */; };
+		A891A64516D5C12000297C5C /* CoreFoundationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A63A16D5C12000297C5C /* CoreFoundationDataSource.m */; };
+		A891A64616D5C12000297C5C /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A63C16D5C12000297C5C /* DataSource.m */; };
+		A891A64716D5C12000297C5C /* DataSourceWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A63E16D5C12000297C5C /* DataSourceWrapper.m */; };
+		A891A64816D5C12000297C5C /* HttpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A64016D5C12000297C5C /* HttpDataSource.m */; };
+		A891A64916D5C12000297C5C /* LocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A891A64216D5C12000297C5C /* LocalFileDataSource.m */; };
+		A891A64B16D5C3F700297C5C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A891A64A16D5C3F600297C5C /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A82A89DC16D58EBF0056B563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A82A899D16D58EBF0056B563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A82A89A416D58EBF0056B563;
+			remoteInfo = PodTalkBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A8140A2C16D6034900A820AC /* Podcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Podcast.h; path = PodTalkBuddy/Podcast.h; sourceTree = "<group>"; };
+		A8140A2D16D6034900A820AC /* Podcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Podcast.m; path = PodTalkBuddy/Podcast.m; sourceTree = "<group>"; };
+		A8140A3B16D6041F00A820AC /* Podcast+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Podcast+Create.h"; path = "PodTalkBuddy/Podcast+Create.h"; sourceTree = "<group>"; };
+		A8140A3C16D6041F00A820AC /* Podcast+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Podcast+Create.m"; path = "PodTalkBuddy/Podcast+Create.m"; sourceTree = "<group>"; };
+		A8140A3E16D6044500A820AC /* PodcastService+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PodcastService+Create.h"; path = "PodTalkBuddy/PodcastService+Create.h"; sourceTree = "<group>"; };
+		A8140A3F16D6044500A820AC /* PodcastService+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PodcastService+Create.m"; path = "PodTalkBuddy/PodcastService+Create.m"; sourceTree = "<group>"; };
+		A8140A4116D6045E00A820AC /* Category+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Category+Create.h"; path = "PodTalkBuddy/Category+Create.h"; sourceTree = "<group>"; };
+		A8140A4216D6045E00A820AC /* Category+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Category+Create.m"; path = "PodTalkBuddy/Category+Create.m"; sourceTree = "<group>"; };
+		A8140A4416D6138900A820AC /* PodcastService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PodcastService.h; path = PodTalkBuddy/PodcastService.h; sourceTree = "<group>"; };
+		A8140A4516D6138900A820AC /* PodcastService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PodcastService.m; path = PodTalkBuddy/PodcastService.m; sourceTree = "<group>"; };
+		A8140A4716D613A200A820AC /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = PodTalkBuddy/Category.h; sourceTree = "<group>"; };
+		A8140A4816D613A300A820AC /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = PodTalkBuddy/Category.m; sourceTree = "<group>"; };
+		A82A89A516D58EBF0056B563 /* PodTalkBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodTalkBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82A89A816D58EBF0056B563 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A82A89AA16D58EBF0056B563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A82A89AC16D58EBF0056B563 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A82A89AE16D58EBF0056B563 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A82A89B216D58EBF0056B563 /* PodTalkBuddy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PodTalkBuddy-Info.plist"; sourceTree = "<group>"; };
+		A82A89B416D58EBF0056B563 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A82A89B616D58EBF0056B563 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A82A89B816D58EBF0056B563 /* PodTalkBuddy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PodTalkBuddy-Prefix.pch"; sourceTree = "<group>"; };
+		A82A89B916D58EBF0056B563 /* PTBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBAppDelegate.h; sourceTree = "<group>"; };
+		A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBAppDelegate.m; sourceTree = "<group>"; };
+		A82A89BC16D58EBF0056B563 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A82A89BE16D58EBF0056B563 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A82A89C016D58EBF0056B563 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A82A89C316D58EBF0056B563 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		A82A89C616D58EBF0056B563 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		A82A89C916D58EBF0056B563 /* PodTalkBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PodTalkBuddy.xcdatamodel; sourceTree = "<group>"; };
+		A82A89CB16D58EBF0056B563 /* PTBMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBMasterViewController.h; sourceTree = "<group>"; };
+		A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBMasterViewController.m; sourceTree = "<group>"; };
+		A82A89CE16D58EBF0056B563 /* PTBDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBDetailViewController.h; sourceTree = "<group>"; };
+		A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBDetailViewController.m; sourceTree = "<group>"; };
+		A82A89D616D58EBF0056B563 /* PodTalkBuddyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodTalkBuddyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82A89D716D58EBF0056B563 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A82A89E016D58EBF0056B563 /* PodTalkBuddyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PodTalkBuddyTests-Info.plist"; sourceTree = "<group>"; };
+		A82A89E216D58EBF0056B563 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A82A89E416D58EBF0056B563 /* PodTalkBuddyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodTalkBuddyTests.h; sourceTree = "<group>"; };
+		A82A89E516D58EBF0056B563 /* PodTalkBuddyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodTalkBuddyTests.m; sourceTree = "<group>"; };
+		A82A89F016D59A2D0056B563 /* soundbar_plate_mono.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundbar_plate_mono.png; sourceTree = "<group>"; };
+		A82A89F216D59A3C0056B563 /* speaker_grill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speaker_grill.png; sourceTree = "<group>"; };
+		A891A60316D5A6C100297C5C /* AQLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQLevelMeter.h; sourceTree = "<group>"; };
+		A891A60416D5A6C100297C5C /* AQLevelMeter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQLevelMeter.mm; sourceTree = "<group>"; };
+		A891A60516D5A6C100297C5C /* GLLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLevelMeter.h; sourceTree = "<group>"; };
+		A891A60616D5A6C100297C5C /* GLLevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLevelMeter.m; sourceTree = "<group>"; };
+		A891A60716D5A6C100297C5C /* LevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelMeter.h; sourceTree = "<group>"; };
+		A891A60816D5A6C100297C5C /* LevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMeter.m; sourceTree = "<group>"; };
+		A891A60F16D5A80D00297C5C /* MeterTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeterTable.cpp; sourceTree = "<group>"; };
+		A891A61016D5A80D00297C5C /* MeterTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterTable.h; sourceTree = "<group>"; };
+		A891A61416D5A8AA00297C5C /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
+		A891A61516D5A8AA00297C5C /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		A891A61616D5A8AA00297C5C /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
+		A891A61716D5A8AA00297C5C /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		A891A61816D5A8AA00297C5C /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		A891A61916D5A8AA00297C5C /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		A891A61A16D5A8AA00297C5C /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		A891A61E16D5AA4D00297C5C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A891A62016D5AA5B00297C5C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A891A62216D5AA6500297C5C /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A891A62416D5AA7200297C5C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A891A62616D5AA8700297C5C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A891A62816D5AAA100297C5C /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		A891A63516D5C12000297C5C /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		A891A63616D5C12000297C5C /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		A891A63716D5C12000297C5C /* AutoRecoveringHttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRecoveringHttpDataSource.h; sourceTree = "<group>"; };
+		A891A63816D5C12000297C5C /* AutoRecoveringHttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRecoveringHttpDataSource.m; sourceTree = "<group>"; };
+		A891A63916D5C12000297C5C /* CoreFoundationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundationDataSource.h; sourceTree = "<group>"; };
+		A891A63A16D5C12000297C5C /* CoreFoundationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFoundationDataSource.m; sourceTree = "<group>"; };
+		A891A63B16D5C12000297C5C /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		A891A63C16D5C12000297C5C /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		A891A63D16D5C12000297C5C /* DataSourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceWrapper.h; sourceTree = "<group>"; };
+		A891A63E16D5C12000297C5C /* DataSourceWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceWrapper.m; sourceTree = "<group>"; };
+		A891A63F16D5C12000297C5C /* HttpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpDataSource.h; sourceTree = "<group>"; };
+		A891A64016D5C12000297C5C /* HttpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDataSource.m; sourceTree = "<group>"; };
+		A891A64116D5C12000297C5C /* LocalFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileDataSource.h; sourceTree = "<group>"; };
+		A891A64216D5C12000297C5C /* LocalFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileDataSource.m; sourceTree = "<group>"; };
+		A891A64A16D5C3F600297C5C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A82A89A216D58EBF0056B563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A891A64B16D5C3F700297C5C /* SystemConfiguration.framework in Frameworks */,
+				A891A62916D5AAA100297C5C /* CoreFoundation.framework in Frameworks */,
+				A891A62716D5AA8700297C5C /* CFNetwork.framework in Frameworks */,
+				A891A62516D5AA7200297C5C /* QuartzCore.framework in Frameworks */,
+				A891A62316D5AA6500297C5C /* CoreAudio.framework in Frameworks */,
+				A891A62116D5AA5B00297C5C /* OpenGLES.framework in Frameworks */,
+				A891A61F16D5AA4E00297C5C /* AudioToolbox.framework in Frameworks */,
+				A82A89A916D58EBF0056B563 /* UIKit.framework in Frameworks */,
+				A82A89AB16D58EBF0056B563 /* Foundation.framework in Frameworks */,
+				A82A89AD16D58EBF0056B563 /* CoreGraphics.framework in Frameworks */,
+				A82A89AF16D58EBF0056B563 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A82A89D216D58EBF0056B563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A82A89D816D58EBF0056B563 /* SenTestingKit.framework in Frameworks */,
+				A82A89D916D58EBF0056B563 /* UIKit.framework in Frameworks */,
+				A82A89DA16D58EBF0056B563 /* Foundation.framework in Frameworks */,
+				A82A89DB16D58EBF0056B563 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8140A2516D602E700A820AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8140A4716D613A200A820AC /* Category.h */,
+				A8140A4816D613A300A820AC /* Category.m */,
+				A8140A4416D6138900A820AC /* PodcastService.h */,
+				A8140A4516D6138900A820AC /* PodcastService.m */,
+				A8140A2C16D6034900A820AC /* Podcast.h */,
+				A8140A2D16D6034900A820AC /* Podcast.m */,
+				A8140A3B16D6041F00A820AC /* Podcast+Create.h */,
+				A8140A3C16D6041F00A820AC /* Podcast+Create.m */,
+				A8140A3E16D6044500A820AC /* PodcastService+Create.h */,
+				A8140A3F16D6044500A820AC /* PodcastService+Create.m */,
+				A8140A4116D6045E00A820AC /* Category+Create.h */,
+				A8140A4216D6045E00A820AC /* Category+Create.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A8140A4A16D613F500A820AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89C216D58EBF0056B563 /* MainStoryboard_iPhone.storyboard */,
+				A82A89C516D58EBF0056B563 /* MainStoryboard_iPad.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A8140A4B16D6141100A820AC /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A891A60216D5A6C100297C5C /* AudioViews */,
+				A891A63416D5C12000297C5C /* AudioPlayer */,
+				A891A61316D5A8AA00297C5C /* PublicUtility */,
+				A891A61216D5A81500297C5C /* OtherSources */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		A82A899C16D58EBF0056B563 = {
+			isa = PBXGroup;
+			children = (
+				A8140A2516D602E700A820AC /* Model */,
+				A8140A4A16D613F500A820AC /* View */,
+				A82A89B016D58EBF0056B563 /* PodTalkBuddy */,
+				A8140A4B16D6141100A820AC /* Vendor */,
+				A82A89DE16D58EBF0056B563 /* PodTalkBuddyTests */,
+				A82A89EF16D59A1C0056B563 /* Resources */,
+				A82A89A716D58EBF0056B563 /* Frameworks */,
+				A82A89A616D58EBF0056B563 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A82A89A616D58EBF0056B563 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89A516D58EBF0056B563 /* PodTalkBuddy.app */,
+				A82A89D616D58EBF0056B563 /* PodTalkBuddyTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A82A89A716D58EBF0056B563 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A891A64A16D5C3F600297C5C /* SystemConfiguration.framework */,
+				A891A62816D5AAA100297C5C /* CoreFoundation.framework */,
+				A891A62616D5AA8700297C5C /* CFNetwork.framework */,
+				A891A62416D5AA7200297C5C /* QuartzCore.framework */,
+				A891A62216D5AA6500297C5C /* CoreAudio.framework */,
+				A891A62016D5AA5B00297C5C /* OpenGLES.framework */,
+				A891A61E16D5AA4D00297C5C /* AudioToolbox.framework */,
+				A82A89A816D58EBF0056B563 /* UIKit.framework */,
+				A82A89AA16D58EBF0056B563 /* Foundation.framework */,
+				A82A89AC16D58EBF0056B563 /* CoreGraphics.framework */,
+				A82A89AE16D58EBF0056B563 /* CoreData.framework */,
+				A82A89D716D58EBF0056B563 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A82A89B016D58EBF0056B563 /* PodTalkBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89B916D58EBF0056B563 /* PTBAppDelegate.h */,
+				A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */,
+				A82A89CB16D58EBF0056B563 /* PTBMasterViewController.h */,
+				A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */,
+				A82A89CE16D58EBF0056B563 /* PTBDetailViewController.h */,
+				A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */,
+				A82A89C816D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld */,
+				A82A89B116D58EBF0056B563 /* Supporting Files */,
+			);
+			path = PodTalkBuddy;
+			sourceTree = "<group>";
+		};
+		A82A89B116D58EBF0056B563 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89B216D58EBF0056B563 /* PodTalkBuddy-Info.plist */,
+				A82A89B316D58EBF0056B563 /* InfoPlist.strings */,
+				A82A89B616D58EBF0056B563 /* main.m */,
+				A82A89B816D58EBF0056B563 /* PodTalkBuddy-Prefix.pch */,
+				A82A89BC16D58EBF0056B563 /* Default.png */,
+				A82A89BE16D58EBF0056B563 /* Default@2x.png */,
+				A82A89C016D58EBF0056B563 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A82A89DE16D58EBF0056B563 /* PodTalkBuddyTests */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89E416D58EBF0056B563 /* PodTalkBuddyTests.h */,
+				A82A89E516D58EBF0056B563 /* PodTalkBuddyTests.m */,
+				A82A89DF16D58EBF0056B563 /* Supporting Files */,
+			);
+			path = PodTalkBuddyTests;
+			sourceTree = "<group>";
+		};
+		A82A89DF16D58EBF0056B563 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89E016D58EBF0056B563 /* PodTalkBuddyTests-Info.plist */,
+				A82A89E116D58EBF0056B563 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A82A89EF16D59A1C0056B563 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A82A89F216D59A3C0056B563 /* speaker_grill.png */,
+				A82A89F016D59A2D0056B563 /* soundbar_plate_mono.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A891A60216D5A6C100297C5C /* AudioViews */ = {
+			isa = PBXGroup;
+			children = (
+				A891A60316D5A6C100297C5C /* AQLevelMeter.h */,
+				A891A60416D5A6C100297C5C /* AQLevelMeter.mm */,
+				A891A60516D5A6C100297C5C /* GLLevelMeter.h */,
+				A891A60616D5A6C100297C5C /* GLLevelMeter.m */,
+				A891A60716D5A6C100297C5C /* LevelMeter.h */,
+				A891A60816D5A6C100297C5C /* LevelMeter.m */,
+			);
+			path = AudioViews;
+			sourceTree = "<group>";
+		};
+		A891A61216D5A81500297C5C /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				A891A60F16D5A80D00297C5C /* MeterTable.cpp */,
+				A891A61016D5A80D00297C5C /* MeterTable.h */,
+			);
+			name = OtherSources;
+			sourceTree = "<group>";
+		};
+		A891A61316D5A8AA00297C5C /* PublicUtility */ = {
+			isa = PBXGroup;
+			children = (
+				A891A61416D5A8AA00297C5C /* CADebugMacros.cpp */,
+				A891A61516D5A8AA00297C5C /* CADebugMacros.h */,
+				A891A61616D5A8AA00297C5C /* CAMath.h */,
+				A891A61716D5A8AA00297C5C /* CAStreamBasicDescription.cpp */,
+				A891A61816D5A8AA00297C5C /* CAStreamBasicDescription.h */,
+				A891A61916D5A8AA00297C5C /* CAXException.cpp */,
+				A891A61A16D5A8AA00297C5C /* CAXException.h */,
+			);
+			path = PublicUtility;
+			sourceTree = "<group>";
+		};
+		A891A63416D5C12000297C5C /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				A891A63516D5C12000297C5C /* AudioPlayer.h */,
+				A891A63616D5C12000297C5C /* AudioPlayer.m */,
+				A891A63716D5C12000297C5C /* AutoRecoveringHttpDataSource.h */,
+				A891A63816D5C12000297C5C /* AutoRecoveringHttpDataSource.m */,
+				A891A63916D5C12000297C5C /* CoreFoundationDataSource.h */,
+				A891A63A16D5C12000297C5C /* CoreFoundationDataSource.m */,
+				A891A63B16D5C12000297C5C /* DataSource.h */,
+				A891A63C16D5C12000297C5C /* DataSource.m */,
+				A891A63D16D5C12000297C5C /* DataSourceWrapper.h */,
+				A891A63E16D5C12000297C5C /* DataSourceWrapper.m */,
+				A891A63F16D5C12000297C5C /* HttpDataSource.h */,
+				A891A64016D5C12000297C5C /* HttpDataSource.m */,
+				A891A64116D5C12000297C5C /* LocalFileDataSource.h */,
+				A891A64216D5C12000297C5C /* LocalFileDataSource.m */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A82A89A416D58EBF0056B563 /* PodTalkBuddy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A82A89E916D58EBF0056B563 /* Build configuration list for PBXNativeTarget "PodTalkBuddy" */;
+			buildPhases = (
+				A82A89A116D58EBF0056B563 /* Sources */,
+				A82A89A216D58EBF0056B563 /* Frameworks */,
+				A82A89A316D58EBF0056B563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PodTalkBuddy;
+			productName = PodTalkBuddy;
+			productReference = A82A89A516D58EBF0056B563 /* PodTalkBuddy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A82A89D516D58EBF0056B563 /* PodTalkBuddyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A82A89EC16D58EBF0056B563 /* Build configuration list for PBXNativeTarget "PodTalkBuddyTests" */;
+			buildPhases = (
+				A82A89D116D58EBF0056B563 /* Sources */,
+				A82A89D216D58EBF0056B563 /* Frameworks */,
+				A82A89D316D58EBF0056B563 /* Resources */,
+				A82A89D416D58EBF0056B563 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A82A89DD16D58EBF0056B563 /* PBXTargetDependency */,
+			);
+			name = PodTalkBuddyTests;
+			productName = PodTalkBuddyTests;
+			productReference = A82A89D616D58EBF0056B563 /* PodTalkBuddyTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A82A899D16D58EBF0056B563 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PTB;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = vincemansel;
+			};
+			buildConfigurationList = A82A89A016D58EBF0056B563 /* Build configuration list for PBXProject "PodTalkBuddy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A82A899C16D58EBF0056B563;
+			productRefGroup = A82A89A616D58EBF0056B563 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A82A89A416D58EBF0056B563 /* PodTalkBuddy */,
+				A82A89D516D58EBF0056B563 /* PodTalkBuddyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A82A89A316D58EBF0056B563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A82A89B516D58EBF0056B563 /* InfoPlist.strings in Resources */,
+				A82A89BD16D58EBF0056B563 /* Default.png in Resources */,
+				A82A89BF16D58EBF0056B563 /* Default@2x.png in Resources */,
+				A82A89C116D58EBF0056B563 /* Default-568h@2x.png in Resources */,
+				A82A89C416D58EBF0056B563 /* MainStoryboard_iPhone.storyboard in Resources */,
+				A82A89C716D58EBF0056B563 /* MainStoryboard_iPad.storyboard in Resources */,
+				A82A89F116D59A2D0056B563 /* soundbar_plate_mono.png in Resources */,
+				A82A89F316D59A3C0056B563 /* speaker_grill.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A82A89D316D58EBF0056B563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A82A89E316D58EBF0056B563 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A82A89D416D58EBF0056B563 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A82A89A116D58EBF0056B563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A82A89B716D58EBF0056B563 /* main.m in Sources */,
+				A82A89BB16D58EBF0056B563 /* PTBAppDelegate.m in Sources */,
+				A82A89CA16D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld in Sources */,
+				A82A89CD16D58EBF0056B563 /* PTBMasterViewController.m in Sources */,
+				A82A89D016D58EBF0056B563 /* PTBDetailViewController.m in Sources */,
+				A891A60B16D5A6C100297C5C /* AQLevelMeter.mm in Sources */,
+				A891A60C16D5A6C100297C5C /* GLLevelMeter.m in Sources */,
+				A891A60D16D5A6C100297C5C /* LevelMeter.m in Sources */,
+				A891A64316D5C12000297C5C /* AudioPlayer.m in Sources */,
+				A891A64416D5C12000297C5C /* AutoRecoveringHttpDataSource.m in Sources */,
+				A891A64516D5C12000297C5C /* CoreFoundationDataSource.m in Sources */,
+				A891A64616D5C12000297C5C /* DataSource.m in Sources */,
+				A891A64716D5C12000297C5C /* DataSourceWrapper.m in Sources */,
+				A891A64816D5C12000297C5C /* HttpDataSource.m in Sources */,
+				A891A64916D5C12000297C5C /* LocalFileDataSource.m in Sources */,
+				A8140A2E16D6034900A820AC /* Podcast.m in Sources */,
+				A8140A3D16D6041F00A820AC /* Podcast+Create.m in Sources */,
+				A8140A4016D6044500A820AC /* PodcastService+Create.m in Sources */,
+				A8140A4316D6045E00A820AC /* Category+Create.m in Sources */,
+				A8140A4616D6138900A820AC /* PodcastService.m in Sources */,
+				A8140A4916D613A400A820AC /* Category.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A82A89D116D58EBF0056B563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A82A89E616D58EBF0056B563 /* PodTalkBuddyTests.m in Sources */,
+				A891A61116D5A80D00297C5C /* MeterTable.cpp in Sources */,
+				A891A61B16D5A8AA00297C5C /* CADebugMacros.cpp in Sources */,
+				A891A61C16D5A8AA00297C5C /* CAStreamBasicDescription.cpp in Sources */,
+				A891A61D16D5A8AA00297C5C /* CAXException.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A82A89DD16D58EBF0056B563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A82A89A416D58EBF0056B563 /* PodTalkBuddy */;
+			targetProxy = A82A89DC16D58EBF0056B563 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A82A89B316D58EBF0056B563 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A82A89B416D58EBF0056B563 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A82A89C216D58EBF0056B563 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A82A89C316D58EBF0056B563 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			path = PodTalkBuddy;
+			sourceTree = "<group>";
+		};
+		A82A89C516D58EBF0056B563 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A82A89C616D58EBF0056B563 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			path = PodTalkBuddy;
+			sourceTree = "<group>";
+		};
+		A82A89E116D58EBF0056B563 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A82A89E216D58EBF0056B563 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A82A89E716D58EBF0056B563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A82A89E816D58EBF0056B563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A82A89EA16D58EBF0056B563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PodTalkBuddy/PodTalkBuddy-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "PodTalkBuddy/PodTalkBuddy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A82A89EB16D58EBF0056B563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PodTalkBuddy/PodTalkBuddy-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "PodTalkBuddy/PodTalkBuddy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A82A89ED16D58EBF0056B563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PodTalkBuddy.app/PodTalkBuddy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PodTalkBuddy/PodTalkBuddy-Prefix.pch";
+				INFOPLIST_FILE = "PodTalkBuddyTests/PodTalkBuddyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A82A89EE16D58EBF0056B563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PodTalkBuddy.app/PodTalkBuddy";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PodTalkBuddy/PodTalkBuddy-Prefix.pch";
+				INFOPLIST_FILE = "PodTalkBuddyTests/PodTalkBuddyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A82A89A016D58EBF0056B563 /* Build configuration list for PBXProject "PodTalkBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A82A89E716D58EBF0056B563 /* Debug */,
+				A82A89E816D58EBF0056B563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A82A89E916D58EBF0056B563 /* Build configuration list for PBXNativeTarget "PodTalkBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A82A89EA16D58EBF0056B563 /* Debug */,
+				A82A89EB16D58EBF0056B563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A82A89EC16D58EBF0056B563 /* Build configuration list for PBXNativeTarget "PodTalkBuddyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A82A89ED16D58EBF0056B563 /* Debug */,
+				A82A89EE16D58EBF0056B563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A82A89C816D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A82A89C916D58EBF0056B563 /* PodTalkBuddy.xcdatamodel */,
+			);
+			currentVersion = A82A89C916D58EBF0056B563 /* PodTalkBuddy.xcdatamodel */;
+			path = PodTalkBuddy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A82A899D16D58EBF0056B563 /* Project object */;
+}
