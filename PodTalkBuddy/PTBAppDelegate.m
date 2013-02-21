@@ -9,7 +9,15 @@
 #import "PTBAppDelegate.h"
 
 #import "PTBMasterViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
+@interface PTBAppDelegate ()
+{
+    AVAudioSession *audioSession;
+}
+
+@end
 @implementation PTBAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -18,6 +26,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    audioSession = [AVAudioSession sharedInstance];
+    
+    NSError *setCategoryError = nil;
+    BOOL success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    if (!success) {
+        NSLog(@"Cannot set audio session category ambient");
+    }
+    
+    NSError *activationError = nil;
+    success = [audioSession setActive:YES error:&activationError];
+    if (!success) {
+        NSLog(@"Cannot activate audio session");
+    }
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;

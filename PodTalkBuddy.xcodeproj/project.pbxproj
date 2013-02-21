@@ -13,6 +13,7 @@
 		A8140A4316D6045E00A820AC /* Category+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4216D6045E00A820AC /* Category+Create.m */; };
 		A8140A4616D6138900A820AC /* PodcastService.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4516D6138900A820AC /* PodcastService.m */; };
 		A8140A4916D613A400A820AC /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4816D613A300A820AC /* Category.m */; };
+		A8140A4D16D6DE9F00A820AC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */; };
 		A82A89A916D58EBF0056B563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89A816D58EBF0056B563 /* UIKit.framework */; };
 		A82A89AB16D58EBF0056B563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AA16D58EBF0056B563 /* Foundation.framework */; };
 		A82A89AD16D58EBF0056B563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AC16D58EBF0056B563 /* CoreGraphics.framework */; };
@@ -82,6 +83,7 @@
 		A8140A4516D6138900A820AC /* PodcastService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PodcastService.m; path = PodTalkBuddy/PodcastService.m; sourceTree = "<group>"; };
 		A8140A4716D613A200A820AC /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = PodTalkBuddy/Category.h; sourceTree = "<group>"; };
 		A8140A4816D613A300A820AC /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = PodTalkBuddy/Category.m; sourceTree = "<group>"; };
+		A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A82A89A516D58EBF0056B563 /* PodTalkBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodTalkBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A89A816D58EBF0056B563 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A82A89AA16D58EBF0056B563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -154,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8140A4D16D6DE9F00A820AC /* AVFoundation.framework in Frameworks */,
 				A891A64B16D5C3F700297C5C /* SystemConfiguration.framework in Frameworks */,
 				A891A62916D5AAA100297C5C /* CoreFoundation.framework in Frameworks */,
 				A891A62716D5AA8700297C5C /* CFNetwork.framework in Frameworks */,
@@ -247,6 +250,7 @@
 		A82A89A716D58EBF0056B563 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */,
 				A891A64A16D5C3F600297C5C /* SystemConfiguration.framework */,
 				A891A62816D5AAA100297C5C /* CoreFoundation.framework */,
 				A891A62616D5AA8700297C5C /* CFNetwork.framework */,
