@@ -66,16 +66,26 @@
 
 -(void) enqueue:(id)obj
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     [self insertObject:obj atIndex:0];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(void) skipQueue:(id)obj
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     [self addObject:obj];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(id) dequeue
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     if ([self count] == 0)
     {
         return nil;
@@ -84,17 +94,24 @@
     id retval = [self lastObject];
     
     [self removeLastObject];
-    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     return retval;
 }
 
 -(id) peek
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     return [self lastObject];
 }
 
 -(id) peekRecent
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     if (self.count == 0)
     {
         return nil;
@@ -140,11 +157,16 @@
 
 -(id) initWithDataSource:(DataSource*)dataSourceIn andQueueItemId:(NSObject*)queueItemIdIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     return [self initWithDataSource:dataSourceIn andQueueItemId:queueItemIdIn andBufferIndex:-1];
 }
 
 -(id) initWithDataSource:(DataSource*)dataSourceIn andQueueItemId:(NSObject*)queueItemIdIn andBufferIndex:(int)bufferIndexIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     if (self = [super init])
     {
         self.dataSource = dataSourceIn;
@@ -152,11 +174,15 @@
         self.bufferIndex = bufferIndexIn;
     }
     
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     return self;
 }
 
 -(double) calculatedBitRate
 {
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     double retval;
     
     if (packetDuration && processedPacketsCount > BitRateEstimationMinPackets)
@@ -165,16 +191,22 @@
         
 		retval = averagePacketByteSize / packetDuration * 8;
         
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return retval;
 	}
 	
     retval = (audioStreamBasicDescription.mBytesPerFrame * audioStreamBasicDescription.mSampleRate) * 8;
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     return retval;
 }
 
 -(void) updateAudioDataSource
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     if ([self->dataSource conformsToProtocol:@protocol(AudioDataSource)])
     {
         double calculatedBitrate = [self calculatedBitRate];
@@ -184,10 +216,14 @@
         audioDataSource.averageBitRate = calculatedBitrate;
         audioDataSource.audioDataOffset = audioDataOffset;
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(double) progress
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     double retval = lastProgress;
     double duration = [self duration];
     
@@ -206,12 +242,15 @@
     {
         retval = duration;
     }
-	
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 	return retval;
 }
 
 -(double) duration
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+
     if (self->sampleRate <= 0)
     {
         return 0;
@@ -223,14 +262,21 @@
     
     if (calculatedBitRate == 0 || self->dataSource.length == 0)
     {
+        NSLog(@"OUT: %s = 0", __PRETTY_FUNCTION__);
+
         return 0;
     }
+    
+    NSLog(@"OUT: %s = %f ", __PRETTY_FUNCTION__, audioDataLengthInBytes / (calculatedBitRate / 8));
+
     
     return audioDataLengthInBytes / (calculatedBitRate / 8);
 }
 
 -(UInt64) audioDataLengthInBytes
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    
     if (audioDataByteCount)
     {
         return audioDataByteCount;
@@ -239,8 +285,10 @@
     {
         if (!dataSource.length)
         {
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
             return 0;
         }
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         
         return dataSource.length - audioDataOffset;
     }
@@ -248,6 +296,8 @@
 
 -(NSString*) description
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return [[self queueItemId] description];
 }
 
@@ -277,30 +327,38 @@
 
 static void AudioFileStreamPropertyListenerProc(void* clientData, AudioFileStreamID audioFileStream, AudioFileStreamPropertyID	propertyId, UInt32* flags)
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	AudioPlayer* player = (__bridge AudioPlayer*)clientData;
     
 	[player handlePropertyChangeForFileStream:audioFileStream fileStreamPropertyID:propertyId ioFlags:flags];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 static void AudioFileStreamPacketsProc(void* clientData, UInt32 numberBytes, UInt32 numberPackets, const void* inputData, AudioStreamPacketDescription* packetDescriptions)
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	AudioPlayer* player = (__bridge AudioPlayer*)clientData;
     
 	[player handleAudioPackets:inputData numberBytes:numberBytes numberPackets:numberPackets packetDescriptions:packetDescriptions];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 static void AudioQueueOutputCallbackProc(void* clientData, AudioQueueRef audioQueue, AudioQueueBufferRef buffer)
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	AudioPlayer* player = (__bridge AudioPlayer*)clientData;
     
 	[player handleAudioQueueOutput:audioQueue buffer:buffer];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQueue, AudioQueuePropertyID propertyId)
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	AudioPlayer* player = (__bridge AudioPlayer*)userData;
     
 	[player handlePropertyChangeForQueue:audioQueue propertyID:propertyId];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 @implementation AudioPlayer
@@ -308,18 +366,24 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 
 -(AudioQueueRef)audioQueueRef
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return audioQueue;
 }
 
 -(AudioPlayerInternalState) internalState
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return internalState;
 }
 
 -(void) setInternalState:(AudioPlayerInternalState)value
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (value == internalState)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -329,7 +393,9 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     {
         dispatch_async(dispatch_get_main_queue(), ^
                        {
+                           NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                            [self.delegate audioPlayer:self internalStateChanged:internalState];
+                           NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                        });
     }
     
@@ -368,9 +434,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         
         dispatch_async(dispatch_get_main_queue(), ^
                        {
+                           NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                            [self.delegate audioPlayer:self stateChanged:self.state];
+                           NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                        });
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(AudioPlayerStopReason) stopReason
@@ -380,21 +449,26 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 
 -(BOOL) audioQueueIsRunning
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     UInt32 isRunning;
     UInt32 isRunningSize = sizeof(isRunning);
     
     AudioQueueGetProperty(audioQueue, kAudioQueueProperty_IsRunning, &isRunning, &isRunningSize);
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return isRunning ? YES : NO;
 }
 
 -(id) init
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return [self initWithNumberOfAudioQueueBuffers:AudioPlayerDefaultNumberOfAudioQueueBuffers andReadBufferSize:AudioPlayerDefaultReadBufferSize];
 }
 
 -(id) initWithNumberOfAudioQueueBuffers:(int)numberOfAudioQueueBuffers andReadBufferSize:(int)readBufferSizeIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (self = [super init])
     {
         fastApiQueue = [[NSOperationQueue alloc] init];
@@ -430,11 +504,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         bufferingQueue = [[NSMutableArray alloc] init];
     }
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return self;
 }
 
 -(void) dealloc
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (currentlyReadingEntry)
     {
         currentlyReadingEntry.dataSource.delegate = nil;
@@ -464,10 +540,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     free(packetDescs);
     free(audioQueueBuffer);
     free(audioQueueBufferLookup);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) startSystemBackgroundTask
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	pthread_mutex_lock(&playerMutex);
 	{
 		if (backgroundTaskId != UIBackgroundTaskInvalid)
@@ -483,10 +561,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                             }];
 	}
     pthread_mutex_unlock(&playerMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) stopSystemBackgroundTask
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	pthread_mutex_lock(&playerMutex);
 	{
 		if (backgroundTaskId != UIBackgroundTaskInvalid)
@@ -497,10 +577,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		}
 	}
     pthread_mutex_unlock(&playerMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(DataSource*) dataSourceFromURL:(NSURL*)url
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     DataSource* retval;
     
     if ([url.scheme isEqualToString:@"file"])
@@ -511,12 +593,14 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     {
         retval = [[HttpDataSource alloc] initWithURL:url];
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     
     return retval;
 }
 
 -(void) clearQueue
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
         NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:bufferingQueue.count + upcomingQueue.count];
@@ -542,22 +626,28 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         
         dispatch_async(dispatch_get_main_queue(), ^
         {
+            NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
             if ([self.delegate respondsToSelector:@selector(audioPlayer:didCancelQueuedItems:)])
             {
                 [self.delegate audioPlayer:self didCancelQueuedItems:array];
             }
+            NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
         });
     }
     pthread_mutex_unlock(&playerMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) play:(NSURL*)url
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self setDataSource:[self dataSourceFromURL:url] withQueueItemId:url];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) setDataSource:(DataSource*)dataSourceIn withQueueItemId:(NSObject*)queueItemId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     [fastApiQueue cancelAllOperations];
     
 	[fastApiQueue addOperationWithBlock:^
@@ -575,10 +665,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
         pthread_mutex_unlock(&playerMutex);
     }];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) queueDataSource:(DataSource*)dataSourceIn withQueueItemId:(NSObject*)queueItemId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[fastApiQueue addOperationWithBlock:^
     {
         pthread_mutex_lock(&playerMutex);
@@ -589,10 +681,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
         pthread_mutex_unlock(&playerMutex);
     }];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) handlePropertyChangeForFileStream:(AudioFileStreamID)inAudioFileStream fileStreamPropertyID:(AudioFileStreamPropertyID)inPropertyID ioFlags:(UInt32*)ioFlags
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     
     switch (inPropertyID)
@@ -660,17 +754,24 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
             break;
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) handleAudioPackets:(const void*)inputData numberBytes:(UInt32)numberBytes numberPackets:(UInt32)numberPackets packetDescriptions:(AudioStreamPacketDescription*)packetDescriptionsIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    
     if (currentlyReadingEntry == nil)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return;
     }
     
     if (seekToTimeWasRequested)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return;
     }
     
@@ -702,6 +803,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             
             if (packetSize > currentlyReadingEntry->packetBufferSize)
             {
+                NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                 return;
             }
             
@@ -713,12 +816,16 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                 
                 if (seekToTimeWasRequested || self.internalState == AudioPlayerInternalStateStopped || self.internalState == AudioPlayerInternalStateStopping || self.internalState == AudioPlayerInternalStateDisposed)
                 {
+                    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                     return;
                 }
             }
             
             if (bytesFilled + packetSize > currentlyReadingEntry->packetBufferSize)
             {
+                NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                 return;
             }
             
@@ -739,6 +846,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                 
                 if (seekToTimeWasRequested || self.internalState == AudioPlayerInternalStateStopped || self.internalState == AudioPlayerInternalStateStopping || self.internalState == AudioPlayerInternalStateDisposed)
                 {
+                    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                     return;
                 }
             }
@@ -760,6 +869,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                 
                 if (seekToTimeWasRequested || self.internalState == AudioPlayerInternalStateStopped || self.internalState == AudioPlayerInternalStateStopping || self.internalState == AudioPlayerInternalStateDisposed)
                 {
+                    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                     return;
                 }
 			}
@@ -782,6 +893,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 				{
                     pthread_mutex_unlock(&playerMutex);
                     
+                    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 					return;
 				}
 				
@@ -796,14 +909,21 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             pthread_mutex_unlock(&playerMutex);
 		}
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(void) handleAudioQueueOutput:(AudioQueueRef)audioQueueIn buffer:(AudioQueueBufferRef)bufferIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+    
     int bufferIndex = -1;
     
     if (audioQueueIn != audioQueue)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return;
     }
     
@@ -839,6 +959,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		pthread_cond_signal(&queueBufferReadyCondition);
 		pthread_mutex_unlock(&queueBuffersMutex);
         
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 		return;
 	}
 	
@@ -916,12 +1038,19 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     }
     
     pthread_mutex_unlock(&queueBuffersMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(void) handlePropertyChangeForQueue:(AudioQueueRef)audioQueueIn propertyID:(AudioQueuePropertyID)propertyId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+    
     if (audioQueueIn != audioQueue)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -944,10 +1073,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             
         }
     }
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) enqueueBuffer
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
 		OSStatus error;
@@ -956,6 +1088,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
             return;
         }
         
@@ -963,6 +1097,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
             return;
         }
         
@@ -970,6 +1106,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
             return;
         }
         
@@ -999,6 +1137,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
             return;
         }
         
@@ -1008,6 +1148,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             {
                 pthread_mutex_unlock(&playerMutex);
                 
+                NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
                 return;
             }
         }
@@ -1041,16 +1183,25 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     waiting = NO;
     
     pthread_mutex_unlock(&queueBuffersMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(void) didEncounterError:(AudioPlayerErrorCode)errorCodeIn
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     errorCode = errorCodeIn;
     self.internalState = AudioPlayerInternalStateError;
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 }
 
 -(void) createAudioQueue
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
 	
 	[self startSystemBackgroundTask];
@@ -1069,6 +1220,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     if (error)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return;
     }
     
@@ -1076,6 +1229,7 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     if (error)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -1121,6 +1275,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         
         if (error)
         {
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
             return;
         }
     }
@@ -1137,6 +1293,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
 	if (error)
 	{
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 		return;
 	}
     
@@ -1147,7 +1305,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 	if (error)
 	{
         free(cookieData);
-        
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 		return;
 	}
     
@@ -1156,17 +1315,23 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 	if (error)
 	{
         free(cookieData);
-        
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 		return;
 	}
     
     free(cookieData);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(double) duration
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (newFileToPlay)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return 0;
     }
     
@@ -1174,38 +1339,49 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     if (entry == nil)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
         return 0;
     }
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
     return [entry duration];
 }
 
 -(double) progress
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (seekToTimeWasRequested)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return requestedSeekTime;
     }
     
     if (newFileToPlay)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return 0;
     }
     
     QueueEntry* entry = currentlyPlayingEntry;
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return [entry progress];
 }
 
 -(void) wakeupPlaybackThread
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	NSRunLoop* runLoop = playbackThreadRunLoop;
 	
     if (runLoop)
     {
         CFRunLoopPerformBlock([runLoop getCFRunLoop], NSDefaultRunLoopMode, ^
                               {
+                                  NSLog(@"runloop block IN: %s", __PRETTY_FUNCTION__);
                                   [self processRunloop];
+                                  NSLog(@"runloop block OUT: %s", __PRETTY_FUNCTION__);
                               });
         
         CFRunLoopWakeUp([runLoop getCFRunLoop]);
@@ -1219,11 +1395,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     }
     
     pthread_mutex_unlock(&queueBuffersMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     
 }
 
 -(void) seekToTime:(double)value
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
 		BOOL seekAlreadyRequested = seekToTimeWasRequested;
@@ -1237,10 +1415,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
     }
     pthread_mutex_unlock(&playerMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) processQueue:(BOOL)skipCurrent
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	if (playbackThread == nil)
 	{
 		newFileToPlay = YES;
@@ -1262,10 +1442,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		
 		[self wakeupPlaybackThread];
 	}
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) setCurrentlyReadingEntry:(QueueEntry*)entry andStartPlaying:(BOOL)startPlaying
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     
     pthread_mutex_lock(&queueBuffersMutex);
@@ -1293,6 +1475,7 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     if (error)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -1319,10 +1502,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     }
     
     pthread_mutex_unlock(&queueBuffersMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) audioQueueFinishedPlaying:(QueueEntry*)entry
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     pthread_mutex_lock(&queueBuffersMutex);
     
@@ -1332,10 +1517,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     pthread_mutex_unlock(&queueBuffersMutex);
     pthread_mutex_unlock(&playerMutex);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) processDidFinishPlaying:(QueueEntry*)entry withNext:(QueueEntry*)next
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (entry != currentlyPlayingEntry)
     {
         return;
@@ -1365,7 +1552,9 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             dispatch_async(dispatch_get_main_queue(), ^
                            {
+                               NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                                [self.delegate audioPlayer:self didFinishPlayingQueueItemId:queueItemId withReason:stopReason andProgress:progress andDuration:duration];
+                               NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                            });
         }
         
@@ -1373,7 +1562,9 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             dispatch_async(dispatch_get_main_queue(), ^
                            {
+                               NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                                [self.delegate audioPlayer:self didStartPlayingQueueItemId:playingQueueItemId];
+                               NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                            });
         }
     }
@@ -1390,14 +1581,18 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             dispatch_async(dispatch_get_main_queue(), ^
                            {
+                               NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                                [self.delegate audioPlayer:self didFinishPlayingQueueItemId:queueItemId withReason:stopReason andProgress:progress andDuration:duration];
+                               NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                            });
         }
     }
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(BOOL) processRunloop
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
         if (self.internalState == AudioPlayerInternalStatePaused)
@@ -1505,6 +1700,7 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
             return NO;
         }
     }
@@ -1534,11 +1730,14 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
     }
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+    
     return YES;
 }
 
 -(void) startInternal
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	@autoreleasepool
 	{		
 		playbackThreadRunLoop = [NSRunLoop currentRunLoop];
@@ -1574,15 +1773,19 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		[threadFinishedCondLock lock];
 		[threadFinishedCondLock unlockWithCondition:1];
 	}
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) processSeekToTime
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     NSAssert(currentlyReadingEntry == currentlyPlayingEntry, @"playing and reading must be the same");
     
     if ([currentlyPlayingEntry calculatedBitRate] == 0.0 || currentlyPlayingEntry.dataSource.length <= 0)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -1630,10 +1833,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     }
     
     currentlyPlayingEntry->bytesPlayed = 0;
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(BOOL) startAudioQueue
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     
     self.internalState = AudioPlayerInternalStateWaitingForQueueToStart;
@@ -1659,17 +1865,21 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 	
 	[self stopSystemBackgroundTask];
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return YES;
 }
 
 -(void) stopAudioQueue
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
 	
 	if (!audioQueue)
     {
         self.internalState = AudioPlayerInternalStateStopped;
         
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     else
@@ -1708,10 +1918,14 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     audioQueueFlushing = NO;
     
     self.internalState = AudioPlayerInternalStateStopped;
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) resetAudioQueue
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     
     pthread_mutex_lock(&playerMutex);
@@ -1757,10 +1971,14 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     audioPacketsReadCount = 0;
     audioPacketsPlayedCount = 0;
     audioQueueFlushing = NO;
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) dataSourceDataAvailable:(DataSource*)dataSourceIn
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	OSStatus error;
     
     if (currentlyReadingEntry.dataSource != dataSourceIn)
@@ -1789,6 +2007,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         
         [currentlyReadingEntry.dataSource seekToOffset:position];
         
+        
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -1808,24 +2028,38 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             [self didEncounterError:AudioPlayerErrorStreamParseBytesFailed];
         }
         
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+        
         return;
     }
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) dataSourceErrorOccured:(DataSource*)dataSourceIn
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (currentlyReadingEntry.dataSource != dataSourceIn)
     {
+        
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
     [self didEncounterError:AudioPlayerErrorDataNotFound];
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) dataSourceEof:(DataSource*)dataSourceIn
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (currentlyReadingEntry.dataSource != dataSourceIn)
     {
+        
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return;
     }
     
@@ -1838,7 +2072,9 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     dispatch_async(dispatch_get_main_queue(), ^
                    {
+                       NSLog(@"GCD IN: %s", __PRETTY_FUNCTION__);
                        [self.delegate audioPlayer:self didFinishBufferingSourceWithQueueItemId:queueItemId];
+                       NSLog(@"GCD OUT: %s", __PRETTY_FUNCTION__);
                    });
     
     pthread_mutex_lock(&playerMutex);
@@ -1855,10 +2091,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
     }
     pthread_mutex_unlock(&playerMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) pause
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
 		OSStatus error;
@@ -1877,6 +2116,8 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                     
                     pthread_mutex_unlock(&playerMutex);
                     
+                    
+                    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
                     return;
                 }
             }
@@ -1885,10 +2126,14 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         }
     }
     pthread_mutex_unlock(&playerMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) resume
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
 		OSStatus error;
@@ -1910,23 +2155,30 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
                 
                 pthread_mutex_unlock(&playerMutex);
                 
+                NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+                
                 return;
             }
             
             [self wakeupPlaybackThread];
         }
     }
-    pthread_mutex_unlock(&playerMutex);    
+    pthread_mutex_unlock(&playerMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) stop
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
         if (self.internalState == AudioPlayerInternalStateStopped)
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
             return;
         }
         
@@ -1936,16 +2188,21 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		[self wakeupPlaybackThread];
     }
     pthread_mutex_unlock(&playerMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) flushStop
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     pthread_mutex_lock(&playerMutex);
     {
         if (self.internalState == AudioPlayerInternalStateStopped)
         {
             pthread_mutex_unlock(&playerMutex);
             
+            NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
             return;
         }
         
@@ -1955,10 +2212,13 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 		[self wakeupPlaybackThread];
     }
     pthread_mutex_unlock(&playerMutex);
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) stopThread
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     BOOL wait = NO;
     
     pthread_mutex_lock(&playerMutex);
@@ -1979,23 +2239,31 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
         [threadFinishedCondLock lockWhenCondition:1];
         [threadFinishedCondLock unlockWithCondition:0];
     }
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) dispose
 {
+    
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     [self stop];
     [self stopThread];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(NSObject*) currentlyPlayingQueueItemId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     QueueEntry* entry = currentlyPlayingEntry;
     
     if (entry == nil)
     {
+        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
         return nil;
     }
     
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
     return entry.queueItemId;
 }
 

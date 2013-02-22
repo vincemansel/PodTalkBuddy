@@ -229,6 +229,9 @@
 
 -(void) playButtonPressed
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+
 	if (!self.audioPlayer || !self.detailItem)
 	{
 		return;
@@ -249,12 +252,18 @@
 	
 	if (self.audioPlayer.state == AudioPlayerStatePaused)
 	{
+        NSLog(@"resume: %s", __PRETTY_FUNCTION__);
+
 		[self.audioPlayer resume];
 	}
 	else
 	{
+        NSLog(@"pause: %s", __PRETTY_FUNCTION__);
+
 		[self.audioPlayer pause];
 	}
+    
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) updateControls
@@ -300,27 +309,37 @@
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer stateChanged:(AudioPlayerState)state
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self updateControls];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer didEncounterError:(AudioPlayerErrorCode)errorCode
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self updateControls];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer didStartPlayingQueueItemId:(NSObject*)queueItemId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self updateControls];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject*)queueItemId
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self updateControls];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 -(void) audioPlayer:(AudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(AudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
+    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
 	[self updateControls];
+    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 }
 
 
