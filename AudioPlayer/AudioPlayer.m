@@ -1327,10 +1327,10 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 
 -(double) duration
 {
-    NSLog(@"IN: %s", __PRETTY_FUNCTION__);
+    //NSLog(@"IN: %s", __PRETTY_FUNCTION__);
     if (newFileToPlay)
     {
-        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+        //NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 
         return 0;
     }
@@ -1339,12 +1339,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
     
     if (entry == nil)
     {
-        NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+        //NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 
         return 0;
     }
     
-    NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
+    //NSLog(@"OUT: %s", __PRETTY_FUNCTION__);
 
     return [entry duration];
 }
