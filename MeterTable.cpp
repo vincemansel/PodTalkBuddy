@@ -47,6 +47,9 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
  
 */
 
+#ifndef _meterTable_h
+#define _meterTable_h
+
 #include "MeterTable.h"
 
 inline double DbToAmp(double inDb)
@@ -84,3 +87,6 @@ MeterTable::~MeterTable()
 {
 	free(mTable);
 }
+
+#endif
+

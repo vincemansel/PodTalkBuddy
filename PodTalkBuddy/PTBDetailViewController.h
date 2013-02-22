@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "AQLevelMeter.h"
 #import "AudioPlayer.h"
+//#import "AQLevelMeter.h"
 
 @class AQLevelMeter;
 
@@ -32,15 +32,17 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
-@property (weak, nonatomic) IBOutlet AQLevelMeter *lvlMeter_in;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 @property (strong, readwrite) AudioPlayer* audioPlayer;
+@property (weak, nonatomic) IBOutlet AQLevelMeter *lvlMeter_in;
 
 @property (weak, nonatomic) id<AudioPlayerViewControllerDelegate> delegate;
 
 - (IBAction)sliderMoved:(id)sender;
 - (IBAction)play:(id)sender;
+- (IBAction)back:(id)sender;
+- (IBAction)forward:(id)sender;
 
 @end

@@ -9,12 +9,18 @@
 #import "PTBAppDelegate.h"
 
 #import "PTBMasterViewController.h"
+#import "PTBDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+
+#import "AQLevelMeter.h"
+
+
 
 @interface PTBAppDelegate ()
 {
     AVAudioSession *audioSession;
+    PTBMasterViewController *controller;
 }
 
 @end
@@ -48,11 +54,11 @@
         splitViewController.delegate = (id)navigationController.topViewController;
         
         UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        PTBMasterViewController *controller = (PTBMasterViewController *)masterNavigationController.topViewController;
+        controller = (PTBMasterViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     } else {
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        PTBMasterViewController *controller = (PTBMasterViewController *)navigationController.topViewController;
+        controller = (PTBMasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;
@@ -62,6 +68,21 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    PTBDetailViewController *dvc;
+    
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        UISplitViewController *svc = [controller splitViewController];
+//        UINavigationController *dnvc = [[svc viewControllers] lastObject];
+//        dvc = (PTBDetailViewController*)[dnvc topViewController];
+//    }
+//    else {
+//        dvc = [[[controller navigationController] viewControllers] lastObject];
+//    }
+//    
+//    [dvc.lvlMeter_in setAq:nil];
+//    [dvc.lvlMeter_in shutDownForBackground];
+//    dvc.lvlMeter_in = nil;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

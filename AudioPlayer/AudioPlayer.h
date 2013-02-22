@@ -1,7 +1,9 @@
 /**********************************************************************************
  AudioPlayer.m
  
- Created by Thong Nguyen on 14/05/2012.
+ Developed by Vince Mansel
+ 
+ Inspired by Thong Nguyen's adjustable
  https://github.com/tumtumtum/audjustable
  
  Inspired by Matt Gallagher's AudioStreamer:
@@ -178,6 +180,8 @@ AudioQueueBufferRefLookupEntry;
 @property (readwrite) AudioPlayerState state;
 @property (readonly) AudioPlayerStopReason stopReason;
 @property (readwrite, unsafe_unretained) id<AudioPlayerDelegate> delegate;
+
+@property (readonly) AudioQueueRef audioQueueRef;
 
 -(id) init;
 -(id) initWithNumberOfAudioQueueBuffers:(int)numberOfAudioQueueBuffers andReadBufferSize:(int)readBufferSizeIn;

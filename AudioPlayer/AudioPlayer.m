@@ -306,6 +306,11 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
 @implementation AudioPlayer
 @synthesize delegate, internalState, state;
 
+-(AudioQueueRef)audioQueueRef
+{
+    return audioQueue;
+}
+
 -(AudioPlayerInternalState) internalState
 {
     return internalState;
@@ -931,6 +936,12 @@ static void AudioQueueIsRunningCallbackProc(void* userData, AudioQueueRef audioQ
             [NSRunLoop currentRunLoop];
             
             self.internalState = AudioPlayerInternalStatePlaying;
+            [[NSNotificationCenter defaultCenter] postNotificationName: @"playbackQueueResumed" object: nil];
+
+        }
+        else if (self.internalState == AudioPlayerInternalStateStopped)
+        {
+            
         }
     }
 }

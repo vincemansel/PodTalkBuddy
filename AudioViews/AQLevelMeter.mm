@@ -267,8 +267,7 @@ bail:
 	}
 }
 
-
-- (void)dealloc
+- (void)shutDownForBackground
 {
 	[_updateTimer invalidate];
 	[_channelNumbers release];
@@ -277,6 +276,13 @@ bail:
 	[_borderColor release];
 	
 	delete _meterTable;
+    
+}
+
+- (void)dealloc
+{    
+
+    [self shutDownForBackground];
 	
 	[super dealloc];
 }

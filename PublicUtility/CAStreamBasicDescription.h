@@ -405,5 +405,6 @@ inline bool	operator>(const AudioStreamBasicDescription& x, const AudioStreamBas
 
 bool SanityCheck(const AudioStreamBasicDescription& x);
 
-#include "CAStreamBasicDescription.cpp"
+// Added to Compile Sources in Build Phase
+//#include "CAStreamBasicDescription.cpp"
 #endif // __CAStreamBasicDescription_h__

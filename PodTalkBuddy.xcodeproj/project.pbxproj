@@ -14,21 +14,26 @@
 		A8140A4616D6138900A820AC /* PodcastService.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4516D6138900A820AC /* PodcastService.m */; };
 		A8140A4916D613A400A820AC /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = A8140A4816D613A300A820AC /* Category.m */; };
 		A8140A4D16D6DE9F00A820AC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */; };
+		A8140A4F16D6FA0D00A820AC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8140A4E16D6FA0D00A820AC /* MediaPlayer.framework */; };
+		A8140A5016D72AB700A820AC /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61416D5A8AA00297C5C /* CADebugMacros.cpp */; };
+		A8140A5116D72ACD00A820AC /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61716D5A8AA00297C5C /* CAStreamBasicDescription.cpp */; };
+		A8140A5216D72ACD00A820AC /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A61916D5A8AA00297C5C /* CAXException.cpp */; };
+		A8140A5316D72ACD00A820AC /* MeterTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A891A60F16D5A80D00297C5C /* MeterTable.cpp */; };
 		A82A89A916D58EBF0056B563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89A816D58EBF0056B563 /* UIKit.framework */; };
 		A82A89AB16D58EBF0056B563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AA16D58EBF0056B563 /* Foundation.framework */; };
 		A82A89AD16D58EBF0056B563 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AC16D58EBF0056B563 /* CoreGraphics.framework */; };
 		A82A89AF16D58EBF0056B563 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AE16D58EBF0056B563 /* CoreData.framework */; };
 		A82A89B516D58EBF0056B563 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A82A89B316D58EBF0056B563 /* InfoPlist.strings */; };
 		A82A89B716D58EBF0056B563 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89B616D58EBF0056B563 /* main.m */; };
-		A82A89BB16D58EBF0056B563 /* PTBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */; };
+		A82A89BB16D58EBF0056B563 /* PTBAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82A89BA16D58EBF0056B563 /* PTBAppDelegate.mm */; };
 		A82A89BD16D58EBF0056B563 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89BC16D58EBF0056B563 /* Default.png */; };
 		A82A89BF16D58EBF0056B563 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89BE16D58EBF0056B563 /* Default@2x.png */; };
 		A82A89C116D58EBF0056B563 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C016D58EBF0056B563 /* Default-568h@2x.png */; };
 		A82A89C416D58EBF0056B563 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C216D58EBF0056B563 /* MainStoryboard_iPhone.storyboard */; };
 		A82A89C716D58EBF0056B563 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82A89C516D58EBF0056B563 /* MainStoryboard_iPad.storyboard */; };
 		A82A89CA16D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A82A89C816D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld */; };
-		A82A89CD16D58EBF0056B563 /* PTBMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */; };
-		A82A89D016D58EBF0056B563 /* PTBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */; };
+		A82A89CD16D58EBF0056B563 /* PTBMasterViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CC16D58EBF0056B563 /* PTBMasterViewController.mm */; };
+		A82A89D016D58EBF0056B563 /* PTBDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A82A89CF16D58EBF0056B563 /* PTBDetailViewController.mm */; };
 		A82A89D816D58EBF0056B563 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89D716D58EBF0056B563 /* SenTestingKit.framework */; };
 		A82A89D916D58EBF0056B563 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89A816D58EBF0056B563 /* UIKit.framework */; };
 		A82A89DA16D58EBF0056B563 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82A89AA16D58EBF0056B563 /* Foundation.framework */; };
@@ -84,6 +89,7 @@
 		A8140A4716D613A200A820AC /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = PodTalkBuddy/Category.h; sourceTree = "<group>"; };
 		A8140A4816D613A300A820AC /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Category.m; path = PodTalkBuddy/Category.m; sourceTree = "<group>"; };
 		A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A8140A4E16D6FA0D00A820AC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A82A89A516D58EBF0056B563 /* PodTalkBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodTalkBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A89A816D58EBF0056B563 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A82A89AA16D58EBF0056B563 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,7 +100,7 @@
 		A82A89B616D58EBF0056B563 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A82A89B816D58EBF0056B563 /* PodTalkBuddy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PodTalkBuddy-Prefix.pch"; sourceTree = "<group>"; };
 		A82A89B916D58EBF0056B563 /* PTBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBAppDelegate.h; sourceTree = "<group>"; };
-		A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBAppDelegate.m; sourceTree = "<group>"; };
+		A82A89BA16D58EBF0056B563 /* PTBAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PTBAppDelegate.mm; sourceTree = "<group>"; };
 		A82A89BC16D58EBF0056B563 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A82A89BE16D58EBF0056B563 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A82A89C016D58EBF0056B563 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -102,9 +108,9 @@
 		A82A89C616D58EBF0056B563 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		A82A89C916D58EBF0056B563 /* PodTalkBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PodTalkBuddy.xcdatamodel; sourceTree = "<group>"; };
 		A82A89CB16D58EBF0056B563 /* PTBMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBMasterViewController.h; sourceTree = "<group>"; };
-		A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBMasterViewController.m; sourceTree = "<group>"; };
+		A82A89CC16D58EBF0056B563 /* PTBMasterViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PTBMasterViewController.mm; sourceTree = "<group>"; };
 		A82A89CE16D58EBF0056B563 /* PTBDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTBDetailViewController.h; sourceTree = "<group>"; };
-		A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTBDetailViewController.m; sourceTree = "<group>"; };
+		A82A89CF16D58EBF0056B563 /* PTBDetailViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PTBDetailViewController.mm; sourceTree = "<group>"; };
 		A82A89D616D58EBF0056B563 /* PodTalkBuddyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodTalkBuddyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A89D716D58EBF0056B563 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A82A89E016D58EBF0056B563 /* PodTalkBuddyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PodTalkBuddyTests-Info.plist"; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8140A4F16D6FA0D00A820AC /* MediaPlayer.framework in Frameworks */,
 				A8140A4D16D6DE9F00A820AC /* AVFoundation.framework in Frameworks */,
 				A891A64B16D5C3F700297C5C /* SystemConfiguration.framework in Frameworks */,
 				A891A62916D5AAA100297C5C /* CoreFoundation.framework in Frameworks */,
@@ -250,6 +257,7 @@
 		A82A89A716D58EBF0056B563 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8140A4E16D6FA0D00A820AC /* MediaPlayer.framework */,
 				A8140A4C16D6DE9E00A820AC /* AVFoundation.framework */,
 				A891A64A16D5C3F600297C5C /* SystemConfiguration.framework */,
 				A891A62816D5AAA100297C5C /* CoreFoundation.framework */,
@@ -271,11 +279,11 @@
 			isa = PBXGroup;
 			children = (
 				A82A89B916D58EBF0056B563 /* PTBAppDelegate.h */,
-				A82A89BA16D58EBF0056B563 /* PTBAppDelegate.m */,
+				A82A89BA16D58EBF0056B563 /* PTBAppDelegate.mm */,
 				A82A89CB16D58EBF0056B563 /* PTBMasterViewController.h */,
-				A82A89CC16D58EBF0056B563 /* PTBMasterViewController.m */,
+				A82A89CC16D58EBF0056B563 /* PTBMasterViewController.mm */,
 				A82A89CE16D58EBF0056B563 /* PTBDetailViewController.h */,
-				A82A89CF16D58EBF0056B563 /* PTBDetailViewController.m */,
+				A82A89CF16D58EBF0056B563 /* PTBDetailViewController.mm */,
 				A82A89C816D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld */,
 				A82A89B116D58EBF0056B563 /* Supporting Files */,
 			);
@@ -495,11 +503,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8140A5116D72ACD00A820AC /* CAStreamBasicDescription.cpp in Sources */,
+				A8140A5216D72ACD00A820AC /* CAXException.cpp in Sources */,
+				A8140A5316D72ACD00A820AC /* MeterTable.cpp in Sources */,
+				A8140A5016D72AB700A820AC /* CADebugMacros.cpp in Sources */,
 				A82A89B716D58EBF0056B563 /* main.m in Sources */,
-				A82A89BB16D58EBF0056B563 /* PTBAppDelegate.m in Sources */,
+				A82A89BB16D58EBF0056B563 /* PTBAppDelegate.mm in Sources */,
 				A82A89CA16D58EBF0056B563 /* PodTalkBuddy.xcdatamodeld in Sources */,
-				A82A89CD16D58EBF0056B563 /* PTBMasterViewController.m in Sources */,
-				A82A89D016D58EBF0056B563 /* PTBDetailViewController.m in Sources */,
+				A82A89CD16D58EBF0056B563 /* PTBMasterViewController.mm in Sources */,
+				A82A89D016D58EBF0056B563 /* PTBDetailViewController.mm in Sources */,
 				A891A60B16D5A6C100297C5C /* AQLevelMeter.mm in Sources */,
 				A891A60C16D5A6C100297C5C /* GLLevelMeter.m in Sources */,
 				A891A60D16D5A6C100297C5C /* LevelMeter.m in Sources */,

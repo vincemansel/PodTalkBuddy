@@ -47,8 +47,8 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
  
 */
 
-#ifndef _MeterTable_h
-#define _MeterTable_h
+#ifndef __MeterTable_h_
+#define __MeterTable_h_
 
 
 #include <stdlib.h>
@@ -82,7 +82,8 @@ private:
 	float	*mTable;
 };
 
-#include "MeterTable.cpp"
+// Added to Compile Sources in Build Phase
+//#include "MeterTable.cpp"
 
 #endif
 

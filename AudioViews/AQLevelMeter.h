@@ -52,7 +52,9 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioQueue.h>
 
+extern "C++" {
 #include "MeterTable.h"
+}
 
 #import "CAXException.h"
 
@@ -86,5 +88,7 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 
 -(void)setBorderColor: (UIColor *)borderColor;
 -(void)setBackgroundColor: (UIColor *)backgroundColor;
+- (void)shutDownForBackground;
+
  
 @end

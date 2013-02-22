@@ -308,6 +308,10 @@ bail:
 	
 	glFlush();
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, _viewRenderbuffer);
+#warning EAGLContext
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+    
+    NSLog(@"context presentRenderBuffer");
 	[_context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }	
 

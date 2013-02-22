@@ -7,6 +7,8 @@
 //
 
 #import "PTBDetailViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "AQLevelMeter.h"
 
 @interface PTBDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -18,6 +20,7 @@
 @implementation PTBDetailViewController
 
 @synthesize audioPlayer = _audioPlayer;
+@synthesize lvlMeter_in = _lvlMeter_in;
 
 #pragma mark - Managing the detail item
 
@@ -43,7 +46,12 @@
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"title"] description];
     }
+    UIColor *bgColor = [[UIColor alloc] initWithRed:.39 green:.44 blue:.57 alpha:.5];
+	[_lvlMeter_in setBackgroundColor:bgColor];
+	[_lvlMeter_in setBorderColor:bgColor];
 }
+
+#pragma mark - Lifecyle Management
 
 - (void)viewDidLoad
 {
@@ -60,18 +68,117 @@
     
     [self setupTimer];
     [self updateControls];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackQueueStopped:) name:@"playbackQueueStopped" object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackQueueResumed:) name:@"playbackQueueResumed" object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Turn on remote control event delivery
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // Turn off remote control event delivery
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    
+    // Resign as first responder
+    [self resignFirstResponder];
+    
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
     [timer invalidate];
+    [self.audioPlayer stop];
+    // Clean up delegate since some callbacks occur after state changes
+//    [[NSNotificationCenter defaultCenter] postNotificationName: @"playbackQueueStopped" object: nil];
+    _audioPlayer.delegate = nil;
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"playbackQueueResumed" object:nil];
 }
 
-- (IBAction)sliderMoved:(id)sender {
+# pragma mark Notification routines
+- (void)playbackQueueStopped:(NSNotification *)note
+{
+	//btn_play.title = @"Play";
+//	[_lvlMeter_in setAq: nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)playbackQueueResumed:(NSNotification *)note
+{
+	//btn_play.title = @"Stop";
+//	[_lvlMeter_in setAq: _audioPlayer.audioQueueRef];
+}
+
+
+#pragma mark - UIResponder method overrides for Remote Control
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
+{
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        NSLog(@"sub type: %d", receivedEvent.subtype);
+        switch (receivedEvent.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [self playButtonPressed];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [self back:self];
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                [self forward:self];
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - Target Action Methods
+
+- (IBAction)sliderMoved:(id)sender
+{
     [self sliderChanged];
 }
 
-- (IBAction)play:(id)sender {
+- (IBAction)play:(id)sender
+{
     [self playButtonPressed];
+}
+
+- (IBAction)back:(id)sender
+{
+    NSLog(@"Slider now: %f", self.slider.value);
+    [self.slider setValue:self.slider.value - 10];
+    NSLog(@"Slider back: %f", self.slider.value);
+
+    [self.audioPlayer seekToTime:self.slider.value];
+}
+
+- (IBAction)forward:(id)sender
+{
+    NSLog(@"Slider now: %f", self.slider.value);
+    [self.slider setValue:self.slider.value + 10];
+    NSLog(@"Slider forward: %f", self.slider.value);
+
+    [self.audioPlayer seekToTime:self.slider.value];
 }
 
 -(void) sliderChanged
@@ -85,6 +192,8 @@
 	
 	[self.audioPlayer seekToTime:self.slider.value];
 }
+
+#
 
 -(void) setupTimer
 {
@@ -127,6 +236,15 @@
     
     if ([self.playButton.titleLabel.text isEqualToString:@"Play"]) {
         [self playFromHTTPButtonTouched];
+        
+        NSMutableDictionary *newNowPlayingInfo = [[NSMutableDictionary alloc] init];
+        
+        [newNowPlayingInfo setObject:[self.detailItem valueForKey:@"title"] forKey:MPMediaItemPropertyTitle];
+        [newNowPlayingInfo setObject:[self.detailItem valueForKey:@"speaker"] forKey:MPMediaItemPropertyArtist];
+        [newNowPlayingInfo setObject:[[self.detailItem valueForKey:@"category"] name] forKey:MPMediaItemPropertyAlbumTitle];
+
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:newNowPlayingInfo];
+        
     }
 	
 	if (self.audioPlayer.state == AudioPlayerStatePaused)
